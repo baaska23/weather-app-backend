@@ -1,0 +1,3 @@
+### Get Weather for London
+GET http://localhost:8080/weather?city=Seoul
+Accept: application/json
