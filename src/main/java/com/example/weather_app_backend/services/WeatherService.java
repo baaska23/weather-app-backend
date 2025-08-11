@@ -19,7 +19,10 @@ public class WeatherService {
     }
     
     public String getWeather(String city) {
-        String url = String.format("%s/%s?unitGroup=metric&key=%s&contentType=json", apiUrl, city, apiKey);
+        String url = String.format(
+                "%s/%s/last6days/today?unitGroup=metric&include=days,hours,current&key=%s&contentType=json",
+                apiUrl, city, apiKey
+        );
         try {
             return restTemplate.getForObject(url, String.class);
         } catch (Exception e) {
