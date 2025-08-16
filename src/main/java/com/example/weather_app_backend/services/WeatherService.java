@@ -1,6 +1,7 @@
 package com.example.weather_app_backend.services;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,6 +37,7 @@ public class WeatherService {
         }
     }
     
+    @Cacheable(value = "weather", key = "#city")
     public String getWeatherFromWS(String city) {
         String url = String.format(
                 "%s?access_key=%s&query=%s",
